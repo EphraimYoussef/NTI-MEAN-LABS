@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Home</title>
+  <style>
+		* {
+				box-sizing: border-box;
+				margin: 0;
+				padding: 0;
+			}
+
+			body {
+				font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+				background-color: #f9fafb;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				min-height: 100vh;
+				padding: 2rem;
+			}
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .post-card {
+      background-color: #fff;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease;
+    }
+
+    .post-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .post-card h2 {
+      font-size: 1.2rem;
+      color: #1f2937;
+      margin-bottom: 0.5rem;
+    }
+
+    .post-card p {
+      font-size: 0.95rem;
+      color: #4b5563;
+      line-height: 1.5;
+      margin-bottom: 1rem;
+    }
+
+    .post-card a {
+      text-decoration: none;
+      color: #2563eb;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    .post-card a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    {% for post in posts %}
+      <div class="post-card">
+				<h1>Post #{{ post.id }}</h1>
+        <h2>{{ post.title }}</h2>
+        <p>{{ post.body }}</p>
+        <a href="/post?id={{ post.id }}">Read More</a>
+      </div>
+    {% endfor %}
+  </div>
+</body>
+</html>

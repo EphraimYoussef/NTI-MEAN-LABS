@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Post #{{ id }} Details</title>
+    <style>
+        * {
+          box-sizing: border-box;
+          margin: 0;
+          padding: 0;
+        }
+
+        body {
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+          background-color: #f9fafb;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          min-height: 100vh;
+          padding: 2rem;
+        }
+
+        .post-card {
+          background-color: #ffffff;
+          padding: 2rem;
+          max-width: 600px;
+          width: 100%;
+          border-radius: 16px;
+          box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+          position: relative;
+        }
+
+        .back-btn {
+          position: absolute;
+          top: 1.2rem;
+          left: 1.2rem;
+        }
+
+        .post-card p {
+          margin-top: 1rem;
+          font-size: 1rem;
+          color: #374151;
+          line-height: 1.6;
+        }
+
+        .post-footer {
+          margin-top: 2rem;
+          text-align: right;
+        }
+
+        .post-footer a {
+          text-decoration: none;
+          color: #2563eb;
+          font-weight: bold;
+        }
+    </style>
+  </head>
+    <div class="post-card">
+      <h1> Post #{{ id }} </h1>
+      <h2> {{ title }}</h2>
+      <p>{{ body }}</p>
+      <div class="post-footer">
+        <a href="/">Back to Home</a>
+      </div>
+    </div>
+  </body>
+</html>
