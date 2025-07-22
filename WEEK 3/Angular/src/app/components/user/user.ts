@@ -15,5 +15,8 @@ export class User {
   user !: IUser;
   ngOnInit(){
     this.user = this.users.getUserById(this.userId)!;
+    if(!this.user){
+      throw new Error('User not foundddd');
+    }
   }
 }

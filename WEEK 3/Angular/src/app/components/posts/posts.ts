@@ -13,9 +13,14 @@ export class Posts {
   constructor( private postService: Post){}
   ngOnInit(){
     this.posts = this.postService.getPosts();
+    
   }
   removePost(id : number){
     this.postService.deletePost(id);
     this.posts = this.postService.getPosts();
+  }
+  toggle: boolean = false;
+  toggleForm(){
+    this.toggle = !this.toggle;
   }
 }

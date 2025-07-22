@@ -4,4 +4,7 @@ export interface Ipost {
     title: string;
     body: string;
     createdAt: Date;
+    votes: number;
+    comments: string[];
+    imageUrl: string;
 }

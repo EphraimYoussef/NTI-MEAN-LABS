@@ -1,0 +1,57 @@
+<form 
+  #postForm="ngForm" 
+  (ngSubmit)="submitPost()" 
+  class="w-100 bg-dark text-white rounded-3 p-3 d-flex flex-column gap-3">
+
+  <div class="mb-2 d-flex flex-column gap-2">
+    <label class="form-label">Title</label>
+    <input 
+      type="text" 
+      class="form-control bg-dark text-white rounded-pill border-secondary custom-placeholder" 
+      placeholder="Title" 
+      name="title" 
+      [(ngModel)]="newPost.title" 
+      required>
+  </div>
+
+  <div class="mb-2 d-flex flex-column gap-2">
+    <label class="form-label">Body</label>
+    <textarea 
+      class="form-control bg-dark text-white rounded-4 border-secondary custom-placeholder" 
+      placeholder="What's on your mind?" 
+      name="body" 
+      [(ngModel)]="newPost.body" 
+      rows="3" 
+      required></textarea>
+  </div>
+
+  <div class="mb-2 d-flex flex-column gap-2">
+    <label class="form-label">Image URL</label>
+    <input 
+      type="text" 
+      class="form-control bg-dark text-white rounded-pill border-secondary custom-placeholder" 
+      placeholder="Image URL" 
+      name="imageUrl" 
+      [(ngModel)]="newPost.imageUrl" 
+      required>
+  </div>
+
+  <div class="mb-2 d-flex flex-column gap-2">
+    <label class="form-label">User ID</label>
+    <select 
+      class="form-select bg-dark text-white rounded-pill border-secondary" 
+      name="userId" 
+      [(ngModel)]="newPost.userId"
+      required>
+      <option value = 1 >User 1</option>
+			<option value = 2 >User 2</option>
+			<option value = 3 >User 3</option>
+			<option value = 4 >User 4</option>
+			<option value = 5 >User 5</option>
+    </select>
+  </div>
+
+  <button type="submit" class="btn btn-primary w-100" [disabled]="!postForm.valid">
+    Post
+  </button>
+</form>
