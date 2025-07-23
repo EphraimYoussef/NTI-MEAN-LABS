@@ -1,0 +1,36 @@
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()"
+  class="w-100 bg-dark text-white rounded-3 p-3 d-flex flex-column gap-3">
+	<h1 class="text-center">Login</h1>
+	
+	<!-- * Username -->
+	<div class="mb-2 d-flex flex-column gap-2">
+		<label>Username</label>
+		<input type="text" formControlName="username"  placeholder="Enter your username"
+		class="form-control bg-dark text-white rounded-pill border-secondary custom-placeholder" />
+		<div class="text-danger mx-3" style="height: 8px;">
+			<p *ngIf="loginForm.get('username')?.invalid && loginForm.get('username')?.touched" > Username is required </p>
+		</div>
+	</div>
+
+	<!-- * Email -->
+	<div class="mb-2 d-flex flex-column gap-2">
+		<label>Email</label>
+		<input type="email" formControlName="email" placeholder="Enter your email"
+		class="form-control bg-dark text-white rounded-pill border-secondary custom-placeholder" />
+		<div class="text-danger mx-3" style="height: 8px;">
+			<p *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched" > Email is required </p>
+		</div>
+	</div>
+
+	<!-- * Password -->
+	<div class="mb-2 d-flex flex-column gap-2">
+		<label>Password</label>
+		<input type="password" formControlName="password" placeholder="Enter your password"
+		class="form-control bg-dark text-white rounded-pill border-secondary custom-placeholder" />
+		<div class="text-danger mx-3" style="height: 8px;">
+			<p *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" > Password is required </p>
+		</div>
+	</div>
+
+  <button type="submit" class="btn btn-primary w-100 my-3" [disabled]="!loginForm.valid">Login</button>
+</form>

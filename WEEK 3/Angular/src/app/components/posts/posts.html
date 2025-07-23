@@ -1,60 +1,58 @@
-<div class="container-fluid py-4 bg-secondary" style="min-height: 100vh;">
-	
-	<!-- * Posts -->
-  <div *ngIf = "!toggle" class="d-flex flex-column gap-4 w-100 align-items-center">
-			<div class="card text-bg-dark w-100"
-			*ngFor="let post of posts">
 
-				<!-- * Header -->
-				<div class="card-header d-flex justify-content-between align-items-center">
-					<app-user [userId]="post.userId" [postDate] = "post.createdAt"></app-user>
-					<button 
-						class="btn-close" 
-						style="filter: invert(24%) sepia(85%) saturate(8481%)"
-						(click)="removePost(post.id)">
-					</button>
+<!-- * Posts -->
+<div *ngIf = "!toggle" class="d-flex flex-column gap-4 w-100 align-items-center">
+		<div class="card text-bg-dark w-100"
+		*ngFor="let post of posts">
+
+			<!-- * Header -->
+			<div class="card-header d-flex justify-content-between align-items-center">
+				<app-user [userId]="post.userId" [postDate] = "post.createdAt"></app-user>
+				<button 
+					class="btn-close" 
+					style="filter: invert(24%) sepia(85%) saturate(8481%)"
+					(click)="removePost(post.id)">
+				</button>
+			</div>
+
+			<!-- * Post Content -->
+			<div class="card-body">
+				<h4 class="card-title">{{ post.title }}</h4>
+				<p>{{ post.body }}</p>
+				<!-- * Post Image -->
+				<div class="mt-3 text-center">
+					<img 
+						src="{{ post.imageUrl }}" 
+						[alt]="post.title" 
+						class="img-fluid rounded-4 shadow-sm"
+						style="max-height: 400px; object-fit: cover;">
 				</div>
+			</div>
 
-				<!-- * Post Content -->
-				<div class="card-body">
-					<h4 class="card-title">{{ post.title }}</h4>
-					<p>{{ post.body }}</p>
-					<!-- * Post Image -->
-					<div class="mt-3 text-center">
-						<img 
-							src="{{ post.imageUrl }}" 
-							[alt]="post.title" 
-							class="img-fluid rounded-4 shadow-sm"
-							style="max-height: 400px; object-fit: cover;">
-					</div>
-				</div>
-
-				<!-- * Footer -->
-				<div class="card-footer">
-					<app-likes-and-comments [post]="post"></app-likes-and-comments>
-				</div>
-
-    </div>
-  </div>
-
-  <!-- * New Post -->
-	<app-new-post *ngIf = "toggle" (closeForm) = "toggleForm()"></app-new-post>
-
-	<!-- * Toggle Button -->
-	<button 
-		class="btn btn-light rounded-4 shadow-lg position-fixed d-flex align-items-center justify-content-center"
-		style="bottom: 50px; right: 50px; width: 50px; height: 50px; z-index: 1050; cursor: pointer;"
-		(click) = "toggleForm()"
-		>
-		<svg *ngIf = "!toggle" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
-			<path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"/>
-		</svg>
-		<svg *ngIf = "toggle" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-postcard-heart" viewBox="0 0 16 16">
-			<path d="M8 4.5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0zm3.5.878c1.482-1.42 4.795 1.392 0 4.622-4.795-3.23-1.482-6.043 0-4.622M2.5 5a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1z"/>
-			<path fill-rule="evenodd" d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1z"/>
-		</svg>
-	</button>
+			<!-- * Footer -->
+			<div class="card-footer">
+				<app-likes-and-comments [post]="post"></app-likes-and-comments>
+			</div>
 
 </div>
+</div>
+
+<!-- * New Post -->
+<app-new-post *ngIf = "toggle" (closeForm) = "toggleForm()"></app-new-post>
+
+<!-- * Toggle Button -->
+<button 
+	class="btn btn-light rounded-4 shadow-lg position-fixed d-flex align-items-center justify-content-center"
+	style="bottom: 50px; right: 50px; width: 50px; height: 50px; z-index: 1050; cursor: pointer;"
+	(click) = "toggleForm()"
+	>
+	<svg *ngIf = "!toggle" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+		<path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"/>
+	</svg>
+	<svg *ngIf = "toggle" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-postcard-heart" viewBox="0 0 16 16">
+		<path d="M8 4.5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0zm3.5.878c1.482-1.42 4.795 1.392 0 4.622-4.795-3.23-1.482-6.043 0-4.622M2.5 5a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1z"/>
+		<path fill-rule="evenodd" d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1z"/>
+	</svg>
+</button>
+
 
 

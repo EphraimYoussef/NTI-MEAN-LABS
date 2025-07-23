@@ -40,4 +40,39 @@ export class UserService {
   getUserById(id : number): IUser | undefined {
     return this.users.find(user => user.id === id);
   }
+  getAllUsers(): IUser[] {
+    return this.users;
+  }
+  addUser(user: IUser): void {
+    this.users.push(user);
+  }
+  updateUser(id: number, updatedUser: IUser): void {
+    const index = this.users.findIndex(user => user.id === id);
+    if (index !== -1) {
+      this.users[index] = { ...this.users[index], ...updatedUser };
+    }
+  }
+
+  deleteUser(id: number): void {
+    this.users = this.users.filter(user => user.id !== id);
+  }
+
+  login(username: string, password: string): IUser | undefined {
+    return this.users.find(user => user.name === username && user.password === password);
+  }
+
+  setLoggedInUser(user: IUser): void {
+    localStorage.setItem('loggedInUser', JSON.stringify(user));
+  }
+
+  getLoggedInUser(): IUser | null {
+    const user = localStorage.getItem('loggedInUser');
+    console.log('user from localStorage:', user );
+    
+    return user ? JSON.parse(user) : null;
+  }
+
+  logout(): void {
+    localStorage.removeItem('loggedInUser');
+  }
 }

@@ -3,6 +3,8 @@
   (ngSubmit)="submitPost()" 
   class="w-100 bg-dark text-white rounded-3 p-3 d-flex flex-column gap-3">
 
+  <h1  class="text-center">Create New Post</h1>
+
   <div class="mb-2 d-flex flex-column gap-2">
     <label class="form-label">Title</label>
     <input 
@@ -28,7 +30,7 @@
   <div class="mb-2 d-flex flex-column gap-2">
     <label class="form-label">Image URL</label>
     <input 
-      type="text" 
+      type="url" 
       class="form-control bg-dark text-white rounded-pill border-secondary custom-placeholder" 
       placeholder="Image URL" 
       name="imageUrl" 
